@@ -19,11 +19,9 @@ The work for Dijkstra's algorithm with a d-ary heap, the work is O((log_d |V|)*(
 
 
 - **2a.** 
-## idk if right at all
-
-APSP(0,1,0) = 3
+APSP(0,1,0) = -2
 APSP(0,1,1) = -2
-APSP(0,1,2) = -2
+APSP(0,1,2) = 3
 
 APSP(0,2,0) = 2
 APSP(0,2,1) = -1
@@ -34,16 +32,18 @@ APSP(1,2,1) = 1
 APSP(1,2,2) = 1
 
 
-- **2b.** 
+- **2b.** APSP(i,j,1) = APSP(i,1,1) + APSP(1,2,1) + APSP(2,j,j). 
+
+          APSP(i,j,2) = APSP(i,2,2) + APSP(2,1,2) + APSP(1,0,1) + APSP(0,j,0)
 
 
-- **2c.**
+- **2c.** The optimal substructure for APSP(i,j,k) is if k in the shortest path from i to j, then that shortest path from i to j is a combination of the shortest path between i and k, and k and j.
 
 
-- **2d.**
+- **2d.** Using memoization, |V|^3 distinct subproblems will be calculated. The resulting work of the approach is O(|V|^3).
 
 
-- **2e.**
+- **2e.** Johnson's Algorithm has O(|V|*|E|*log|E|) work. The dynamic programming algorithm is preferable for dense graphs, where Johnson's algorithm blows up due to the large number of edges.
 
 
 - **3a.** Yes, any MST solution will be a solution to MMET. If you have a graph G, you can have multiple spanning trees. If you take the MET and call the maximum weight B, then any other spanning tree with that edge weight B, will be a MMET. But it may or may not be a MST because the total edge weight might be bigger than the original MST or might be equal to the original MST.
